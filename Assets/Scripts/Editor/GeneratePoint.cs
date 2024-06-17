@@ -9,9 +9,15 @@ public class GeneratePoint : MonoBehaviour
     // Start is called before the first frame update
     public static void Generate() {
         print("Generate Point");
+
         string parentTransformName = "Cube";
         int num = 200;
-        GameObject parentTransform = GameObject.Find(parentTransformName);
+        GameObject parentTransform;
+        if(Selection.activeTransform) {
+            parentTransform = Selection.activeTransform.gameObject ;
+        }
+        else
+             parentTransform = GameObject.Find(parentTransformName);
         GameObject Sphere = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Sphere.prefab");
         for (int j = 0; j < num; j++) {
             List<float> values = new List<float>();
